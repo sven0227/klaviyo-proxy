@@ -12,6 +12,7 @@ const limiter = rateLimit({
     max: 100
 })
 
+app.use(cors())
 app.use(express.json())
 app.use(limiter)
 app.set('trust proxy', 1)
@@ -20,6 +21,5 @@ app.set('trust proxy', 1)
 app.use('/api', require('./routes'))
 
 //Enable cors
-app.use(cors())
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

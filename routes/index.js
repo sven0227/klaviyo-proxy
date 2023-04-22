@@ -17,11 +17,13 @@ router.post('/', async (req, res) => {
                 'Content-Type': 'application/json'
             }
         };
+        console.log(profiles);
         const urlWithApikey = `${API_BASE_URL}?${API_KEY_NAME}=${API_KEY_VALUE}`
         const apiRes = await needle('post', urlWithApikey, profiles, options)
         const data = apiRes.body
         res.status(200).json(data)
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error })
     }
 })
